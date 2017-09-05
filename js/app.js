@@ -85,6 +85,8 @@ ko.applyBindings(AppViewModel);
 
 */
 
+
+// LIST VIEW MODEL //
 var ItemListModel = function () {
     
     // Treat yo self
@@ -109,33 +111,49 @@ var ItemListModel = function () {
         self.itemToAdd(""); // Clear the text box
     };
  
-    // Remove Item from list
+    // Remove Item from list //
     self.removeSelected = function () {
         self.allItems.remove(this);
     };
 
-    // increase quantity
+    // increase quantity //
     self.increaseQuantity = function (data) {
         
+        // grab the quantity of the current item from the list array
         var increase = data.quantity();
 
+        // Add one to it
         increase = increase + 1;
 
+        // Put it back in the array with it's new quantity
         data.quantity(increase);
 
      };    
 
-     // decrease quantity    
+     // decrease quantity //   
     self.decreaseQuantity = function (data) {
         
+        // grab the quantity of the current item from the list array
         var decrease = data.quantity();
 
-        decrease = decrease - 1;
+        // subtract one from it unless it is one
+        if (decrease > 1) {
+        	decrease = decrease - 1;
+        }
 
+        // Put it back in the array with it's new quantity
         data.quantity(decrease);
 
      };
- 
+
+    self.test = function(){
+    	// Getting and setting JSON 
+    	$.getJSON("output.json", function(data) { 
+    		// Now use this data to update your view models, 
+    		// and Knockout will update your UI automatically
+    		console.log(data);
+		})
+     } // END test()
 };
  
 ko.applyBindings(new ItemListModel());
