@@ -85,4 +85,57 @@ ko.applyBindings(AppViewModel);
 
 */
 
-console.log("Is this thing on?");
+var ItemListModel = function () {
+    
+    // Treat yo self
+    self = this;
+
+    // New items
+    self.itemToAdd = ko.observable("");
+    
+    // List of items
+    self.allItems = ko.observableArray([]);
+    
+    // Add Item to list
+    self.addItem = function() {
+        
+        if ((self.itemToAdd() != "") && (self.allItems.indexOf(self.itemToAdd()) < 0)) // Prevent blanks and duplicates
+            
+            // Add item and set quantity to 1
+            self.allItems.push(
+            	{ item: self.itemToAdd(), quantity: ko.observable(1) }
+            );
+        
+        self.itemToAdd(""); // Clear the text box
+    };
+ 
+    // Remove Item from list
+    self.removeSelected = function () {
+        self.allItems.remove(this);
+    };
+
+    // increase quantity
+    self.increaseQuantity = function (data) {
+        
+        var increase = data.quantity();
+
+        increase = increase + 1;
+
+        data.quantity(increase);
+
+     };    
+
+     // decrease quantity    
+    self.decreaseQuantity = function (data) {
+        
+        var decrease = data.quantity();
+
+        decrease = decrease - 1;
+
+        data.quantity(decrease);
+
+     };
+ 
+};
+ 
+ko.applyBindings(new ItemListModel());
