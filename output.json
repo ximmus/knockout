@@ -1,40 +1,9 @@
-{ 
-	"status": "success",
-	"code": "200",
-	"data": {
-		"inventory": { 
-			"63": {
-				"wareid":"63",
-				"name":"WH025ColoradoSprings",
-				"items":[
-					{ 
-						"internalid":"1340",
-						"quantity":"126",
-						"name":""
-					},
-					{
-						"internalid":"392",
-						"quantity":"1",
-						"name":"LED EXIT SIGN (APX7R)"
-					}
-				]
-			},
-			"83": {
-				"wareid": "7",
-				"name": "WH012Dardanelle",
-				"items": [
-					{
-						"internalid": "902",
-						"quantity": "4",
-						"name": "LU400MULTIKIT (47364)"
-					}, 
-					{
-						"internalid": "1028",
-						"quantity": "6",
-						"name": "LU400ECO (67533)"
-					}
-				]
-			}
-		}
+[
+
+	{
+
+	"name": "another name"
+
 	}
-}
+
+]	

@@ -147,13 +147,22 @@ var ItemListModel = function () {
      };
 
     self.test = function(){
-    	// Getting and setting JSON 
-    	$.getJSON("output.json", function(data) { 
-    		// Now use this data to update your view models, 
-    		// and Knockout will update your UI automatically
-    		console.log(data);
-		})
-     } // END test()
+		
+		// data to send
+		var data = { name: "new name" };
+
+		function success( returnedData ){
+			
+			// data to read
+			var name = returnedData[0].name;
+			
+			console.log( name );
+		}
+
+		// AJAX request
+		$.get( "output.json", data, success, "json" );
+		
+    } // END test()
 };
  
 ko.applyBindings(new ItemListModel());
